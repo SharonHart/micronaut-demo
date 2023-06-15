@@ -1,0 +1,58 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.7.10"
+    id("com.avast.gradle.docker-compose") version "0.16.12"
+}
+
+version = "0.1"
+group = "demo"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.hamcrest:hamcrest:2.2'
+    compileOnly('org.projectlombok:lombok:1.18.12')
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor('org.projectlombok:lombok:1.18.12')
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.0.0")
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut.sql:micronaut-jooq")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("org.postgresql:postgresql:42.1.4")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("io.micronaut.azure:micronaut-azure-sdk:4.1.1")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-azure")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation("io.swagger.core.v3:swagger-annotations")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("com.h2database:h2")
+
+}
+
+application {
+    mainClass.set("demo.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+graalvmNative.toolchainDetection = false
+
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("demo.*")
+    }
+}
+
+
+
