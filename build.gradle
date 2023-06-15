@@ -13,9 +13,9 @@ repositories {
 
 dependencies {
     compileOnly('org.projectlombok:lombok:1.18.12')
+    annotationProcessor('org.projectlombok:lombok:1.18.12') // See 'Micronaut Data and Lombok'
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
     annotationProcessor("io.micronaut:micronaut-http-validation")
-    annotationProcessor('org.projectlombok:lombok:1.18.12')
     annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.0.0")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut:micronaut-http-client")
@@ -32,7 +32,8 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
     testImplementation('org.hamcrest:hamcrest:2.2')
-
+    testImplementation("io.micronaut.test:micronaut-test-rest-assured")
+    testImplementation("org.mockito:mockito-core")
 }
 
 application {

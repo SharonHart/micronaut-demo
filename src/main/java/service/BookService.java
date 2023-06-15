@@ -7,7 +7,6 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import model.Book;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Singleton

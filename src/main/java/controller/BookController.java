@@ -1,5 +1,6 @@
 package controller;
 
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
@@ -21,7 +22,7 @@ public class BookController {
     }
 
     @Post()
-    public Book create(Book book) {
+    public Book create(@Body Book book) {
         return bookService.create(book);
     }
 
