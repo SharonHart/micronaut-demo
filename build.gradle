@@ -29,6 +29,7 @@ dependencies {
     implementation("io.micronaut.objectstorage:micronaut-object-storage-azure")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.swagger.core.v3:swagger-annotations")
+    implementation("io.micronaut.flyway:micronaut-flyway")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
     testImplementation('org.hamcrest:hamcrest:2.2')
@@ -55,5 +56,6 @@ micronaut {
     }
 }
 
-
-
+test {
+    systemProperty "micronaut.environments", "test"
+}
