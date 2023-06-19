@@ -31,7 +31,7 @@ datasources:
     username: postgres
     password: postgres
     dialect: POSTGRES
-    schema: app
+
 netty:
   default:
     allocator:
@@ -49,3 +49,5 @@ flyway:
   datasources:
     default:
       enabled: true
+      default-schema: app
+      create-schemas: true
